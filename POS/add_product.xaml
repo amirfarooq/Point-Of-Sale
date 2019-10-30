@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="POS.add_product"
+               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"      
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS"
+             mc:Ignorable="d" 
+             d:DesignHeight="378.358" d:DesignWidth="550.373">
+    <Grid Name="prod">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" Content="Category:" HorizontalAlignment="Left" Margin="48,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=cmbcountry}" RenderTransformOrigin="0.649,1.909"/>
+        <ComboBox  Grid.Row="1" Grid.Column="0" x:Name="cat_name" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="115,54,0,0" VerticalAlignment="Top" Width="120" />
+        <TextBox  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,56,0,0" Name="txtpro_name" />
+        <Label  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Product Name:" HorizontalAlignment="Left" Margin="15,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtpro_name}"/>
+
+        <TextBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtquantity"/>
+        <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Quantity:" HorizontalAlignment="Left" Margin="46,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtquantity}"/>
+        <TextBox  Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtprice"/>
+        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Price:" HorizontalAlignment="Left" Margin="65,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtprice}"/>
+        <DatePicker Grid.Row="3" Grid.Column="0" Height="25" HorizontalAlignment="Left" Margin="115,26,0,0" Name="date" VerticalAlignment="Top" Width="115" />
+        <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Date:" HorizontalAlignment="Left" Margin="62,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtdate}"/>
+        <Button Grid.Row="4" Grid.Column="1" x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Center" Margin="0,30"  Width="75" Click="Button_Click_1"/>
+        <Grid Grid.ColumnSpan="2">
+            <Grid  Background="#FF1778DA" Grid.ColumnSpan="2" Height="40"   VerticalAlignment="Top" Margin=" 0,0,0,0">
+                <Button Margin="5,5,0,3" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="145" Height="Auto" Click="Button_Click"  >
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="KeyboardBackspace" VerticalAlignment="Bottom" RenderTransformOrigin="1.281,0.531" Margin="8,0,36,2" Grid.RowSpan="2" HorizontalAlignment="Stretch" Width="Auto"></materialDesign:PackIcon>
+                        <TextBlock  FontSize="15"  Grid.ColumnSpan="2" Margin="26,0" Grid.RowSpan="2"><Run Text="Back To List">
+                            <Run.Background>
+                                <ImageBrush/>
+                            </Run.Background>
+                        </Run></TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock  Text="Add Product" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="5 0 0 30"></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

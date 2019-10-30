@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="POS.Employees"
+               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="employee">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBox  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtname"/>
+        <Label  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Name:" HorizontalAlignment="Left" Margin="48,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+        <TextBox  Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtadress"/>
+        <Label  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Address:" HorizontalAlignment="Left" Margin="48,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtadress}"/>
+        <TextBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,34,0,0" Name="txtcnic"/>
+        <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="CNIC:" HorizontalAlignment="Left" Margin="48,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtcnic}"/>
+        <TextBox  Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,34,0,0" Name="txtphone"/>
+        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Phone No:" HorizontalAlignment="Left" Margin="48,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtphone}"/>
+        <TextBox  Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,34,0,0" Name="txtsalary"/>
+        <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Salary:" HorizontalAlignment="Left" Margin="48,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtsalary}"/>
+        <Button Grid.Row="3" Grid.Column="1" x:Name="btnsubmit" Content="Save" HorizontalAlignment="Center"   Width="127" Click="Button_Click_1" VerticalAlignment="top" Margin="0 60 0 0" Height="auto">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.023"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Grid Grid.ColumnSpan="2">
+            <Grid  Background="#FF1778DA" Grid.ColumnSpan="2" Height="40"   VerticalAlignment="Top" Margin=" 0,0,0,0">
+                <Button Margin="5,5,0,3" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="145" Height="Auto" Click="Button_Click"  >
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="KeyboardBackspace" VerticalAlignment="Bottom" RenderTransformOrigin="1.281,0.531" Margin="8,0,36,2" Grid.RowSpan="2" HorizontalAlignment="Stretch" Width="Auto"></materialDesign:PackIcon>
+                        <TextBlock  FontSize="15"  Grid.ColumnSpan="2" Margin="26,0" Grid.RowSpan="2"><Run Text="Back To List">
+                            <Run.Background>
+                                <ImageBrush/>
+                            </Run.Background>
+                        </Run></TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock  Text="Add Employee" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="20 0 0 20"></TextBlock>
+        </Grid>
+        <DataGrid  Grid.Row="3" x:Name="datagrid_emp" x:Uid="datagrid_emp" SelectionMode="Single"  Margin="0,110,0,214" ItemsSource="{Binding}" AutoGenerateColumns="False"  Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Header="ID" x:Name="id" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding name}" Header="Name" x:Name="name" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding adress}" Header="Address" x:Name="adress" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding cnic}" Header="CNIC" x:Name="cnic" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding phone}" Header="Phone" x:Name="phone" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding salary}" Header="Salary" x:Name="salary" Width="Auto"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Content="Edit" Click="Button_Click_2" CommandParameter="{Binding id}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="delete">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <Button Content="Delete" Click="Button_Click_3" ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+
+</UserControl>

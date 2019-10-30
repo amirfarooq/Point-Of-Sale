@@ -1,0 +1,44 @@
+﻿<Window x:Class="POS.Login"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS"
+        mc:Ignorable="d"
+        Title="Login" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Rectangle Height="300" VerticalAlignment="Top" HorizontalAlignment="Right" Width="800">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FF2288D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Width="100" Height="100" VerticalAlignment="Top" Margin="20"/>
+        <Rectangle Height="240" Width="450" Fill="White" VerticalAlignment="Bottom" Margin="35,0,37,100" RenderTransformOrigin="0.5,0.5" RadiusY="20.679" RadiusX="20.679">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.24"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="1" RenderingBias="Quality" BlurRadius="15" ShadowDepth="1"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
+            <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15" Foreground="Gray" FontSize="18"></TextBlock>
+            <StackPanel  VerticalAlignment="Center" Margin="10">
+                <TextBox materialDesign:HintAssist.Hint="Email" Name="textBoxEmail"  Margin="0,10"></TextBox>
+                <PasswordBox materialDesign:HintAssist.Hint="Password" Name="passwordBox1" Margin="0,10"></PasswordBox>
+            </StackPanel>
+        </Grid>
+        <Button VerticalAlignment="Bottom"  Name="button1"  Click="button1_Click" Margin="0,85" Width="150" Content="Login"/>
+        <TextBlock Text="Forget Password?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Foreground="Gray" Cursor="Hand"></TextBlock>
+    </Grid>
+</Window>
