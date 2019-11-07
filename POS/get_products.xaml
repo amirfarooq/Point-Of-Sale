@@ -14,7 +14,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF1778DA" Grid.RowSpan="1">
-            <Button Margin="5" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="130" Click="Button_Click">
+            <Button Margin="1" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="130" Click="Button_Click">
                 <Grid Width="150">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -25,25 +25,46 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="KeyboardBackspace" VerticalAlignment="Center " RenderTransformOrigin="1.281,0.531" Margin="8,2,0,1.549"></materialDesign:PackIcon>
-                    <TextBlock  FontSize="15"  Grid.ColumnSpan="2" Margin="26,0" Grid.RowSpan="2"><Run Text="Back To List">
+                    <materialDesign:PackIcon Kind="KeyboardBackspace" VerticalAlignment="Center " RenderTransformOrigin="1.281,0.531" Margin="0,2,0,1.549"></materialDesign:PackIcon>
+                    <TextBlock  FontSize="15"  Grid.ColumnSpan="2" Margin="18,0" Grid.RowSpan="2"><Run Text="Back To List">
                             <Run.Background>
                                 <ImageBrush/>
                             </Run.Background>
                         </Run></TextBlock>
                 </Grid>
             </Button>
-            <Button Margin="5" Background="#FF79A6CD" HorizontalAlignment="Right"  Foreground="White"  Width="130" Click="Button_Click">
-                <Grid Width="150">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center " RenderTransformOrigin="1.281,0.531" Margin="8,0"></materialDesign:PackIcon>
-                    <TextBlock Text="Add New"  FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Grid.ColumnSpan="2"  Width="99"></TextBlock>
-                </Grid>
-            </Button>
-
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
+                <Button Margin="0" Background="#FF79A6CD"   Foreground="White"  Width="140" Click="Button_Click_1" >
+                    <Grid Width="150">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Add" VerticalAlignment="Top" RenderTransformOrigin="1.281,0.531" Margin="0,2,0,0"></materialDesign:PackIcon>
+                        <TextBlock Text="Add Category"  FontSize="15" VerticalAlignment="Top"  Grid.ColumnSpan="2"  Width="120" Margin="10,0"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Margin="1" Background="#FF79A6CD" HorizontalAlignment="Right"  Foreground="White"  Width="120" >
+                    <Grid Width="130">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center " RenderTransformOrigin="1.281,0.531" Margin="0,0"></materialDesign:PackIcon>
+                        <TextBlock Text="Add UOM"  FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Grid.ColumnSpan="2"  Width="99"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button Margin="1" Background="#FF79A6CD" HorizontalAlignment="Right"  Foreground="White"  Width="130" >
+                    <Grid Width="150">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Add" VerticalAlignment="Center " RenderTransformOrigin="1.281,0.531" Margin="0,0,0,0"></materialDesign:PackIcon>
+                        <TextBlock Text="Add Product"  FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Grid.ColumnSpan="2"  Width="120"></TextBlock>
+                    </Grid>
+                </Button>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <TextBlock Text="Products" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="5 0 0 0"></TextBlock>
@@ -51,7 +72,7 @@
         <DataGrid Grid.Row="2" x:Name="datagrid1" x:Uid="datagrid1" SelectionMode="Single"    ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" Header="ID" x:Name="id" IsReadOnly="True" ></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding cat_name}" Header="Cat_Name" x:Name="cat_name" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding CategoryId}" Header="Cat_Name" x:Name="CategoryId" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding pro_name}" Header="Pro_Name" x:Name="pro_name" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding quantity}" Header="Quantity" x:Name="quantity" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding price}" Header="Price" x:Name="price" IsReadOnly="True"></DataGridTextColumn>

@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="POS.Invoices"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Name="invoice">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+       </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan="2">
+            <Grid  Background="#FF1778DA" Grid.ColumnSpan="2" Height="40"   VerticalAlignment="Top" Margin=" 0,0,0,0">
+                <Button Margin="5,5,0,3" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="145" Height="Auto" Click="Button_Click" >
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="KeyboardBackspace" VerticalAlignment="Bottom" RenderTransformOrigin="1.281,0.531" Margin="8,0,36,2" Grid.RowSpan="2" HorizontalAlignment="Stretch" Width="Auto"></materialDesign:PackIcon>
+                        <TextBlock  FontSize="15"  Grid.ColumnSpan="2" Margin="26,0" Grid.RowSpan="2"><Run Text="Back To List">
+                            <Run.Background>
+                                <ImageBrush/>
+                            </Run.Background>
+                        </Run></TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBlock Background="#FF79A6CD"  Text="Invoice Screen" TextAlignment="Center" VerticalAlignment="Top"  FontSize="20" Margin="0,0,0,0"  Height="34"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="3" Background="LightGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBox Background="White" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Margin="120,0,0,0" Name="txtname"/>
+            <Label  Grid.Row="1" Grid.Column="0"  Content="Invoice No:"  Margin="50,0,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <DatePicker Background="White" Grid.Row="1" Grid.Column="1"  Height="25" HorizontalAlignment="Left" Margin="75,0,0,0" Name="datePicker1" VerticalAlignment="Top" Width="180" />
+            <Label  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Date:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <TextBox  Background="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="421" Margin="120,5,0,0" Name="txtn"/>
+            <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Customer Name:" HorizontalAlignment="Left" Margin="20,5,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <Grid Grid.Row="0">
+                <TextBlock   Text="Information"  VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Margin="60,0,0,0" Height="34"></TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4" Background="LightGray" Margin="0 0 0 0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  />
+                <ColumnDefinition  />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBox Background="White"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180" Margin="90,0,0,0" Name="txtname1" />
+            <Label  Grid.Row="1" Grid.Column="0" Content="Item:" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <TextBox Background="White"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="180" Margin="50,0,10,0" VerticalAlignment="Top" Name="txt" />
+            <Label  Grid.Row="1" Grid.Column="1" Content="Price:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <TextBox  Background="White" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Margin="50,0,10,0" Name="txt1"  />
+            <Label  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Quantity:" HorizontalAlignment="Left" Margin="-10,0,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="0 0 0 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBox  Background="White" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  TextWrapping="Wrap" Height="27" VerticalAlignment="Top" Width="310" Margin="90,10,5,0"   />
+                <Label  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Total:" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Background="#FF1778DA" Grid.Column="0" x:Name="btnsubmit" Content="Add" HorizontalAlignment="Center"   Width="100"  VerticalAlignment="top" Margin="0,10,100,0" Height="auto" Grid.ColumnSpan="2">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.023"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                    <Button Grid.Row="0" Background="#FF1778DA" Grid.Column="1" x:Name="btndel" Content="Delete" HorizontalAlignment="Center"   Width="100"  VerticalAlignment="top"  Height="auto" Margin="0,10,11,0">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.023"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                    <Button Grid.Row="0" Background="#FF1778DA" Grid.Column="2" x:Name="btnprint" Content="Print" HorizontalAlignment="Left"   Width="100"  VerticalAlignment="top"  Height="auto"  Margin="-5,10,0,0" >
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.023"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                </Grid>
+
+
+            </Grid>
+            <Grid Grid.Row="0">
+                <TextBlock Background="LightGray"  Text="Product Details"  VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Margin="10,15,0,0" Height="34"></TextBlock>
+            </Grid>
+        </Grid>
+
+        <DataGrid  Grid.Row="6" x:Name="datagrid_emp" x:Uid="datagrid_emp" SelectionMode="Single"  ItemsSource="{Binding}" AutoGenerateColumns="False"  Grid.ColumnSpan="2" Margin="0 0 0 0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Header="ID" x:Name="id" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding item}" Header="Item" x:Name="item" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding price}" Header="Price" x:Name="price" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding quantity}" Header="Quantity" x:Name="quantity" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding total}" Header="Total" x:Name="total" Width="Auto"></DataGridTextColumn>
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

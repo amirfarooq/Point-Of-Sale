@@ -1,0 +1,605 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Canister.IoC</name>
+    </assembly>
+    <members>
+        <member name="T:Canister.BaseClasses.BootstrapperBase`1">
+            <summary>
+            Bootstrapper base class
+            </summary>
+            <typeparam name="Container">The actual IoC object</typeparam>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+        </member>
+        <member name="P:Canister.BaseClasses.BootstrapperBase`1.AppContainer">
+            <summary>
+            The IoC container
+            </summary>
+        </member>
+        <member name="P:Canister.BaseClasses.BootstrapperBase`1.Name">
+            <summary>
+            Name of the bootstrapper
+            </summary>
+        </member>
+        <member name="P:Canister.BaseClasses.BootstrapperBase`1.Assemblies">
+            <summary>
+            Gets the assemblies.
+            </summary>
+            <value>The assemblies.</value>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.AddAssembly(System.Reflection.Assembly[])">
+            <summary>
+            Adds the assembly.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Build">
+            <summary>
+            Builds this instance, loads all modules, etc.
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Dispose">
+            <summary>
+            Disposes of the object
+            </summary>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.GetService(System.Type)">
+            <summary>
+            Gets the service.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns>The service specified</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Register``1(``0,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers an object with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="objectToRegister">The object to register.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Register``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor
+            </summary>
+            <typeparam name="T">Object type to register</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Register``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor of a child class
+            </summary>
+            <typeparam name="T1">Base class/interface type</typeparam>
+            <typeparam name="T2">Child class type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Register``1(System.Func{System.IServiceProvider,System.Object},Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with a function
+            </summary>
+            <typeparam name="T">Type that the function returns</typeparam>
+            <param name="function">The function.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Register(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a generic type with the default constructor
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.RegisterAll``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers all objects of a certain type with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Resolve``1(``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Resolve``1(System.String,``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Resolve(System.Type,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Resolve(System.Type,System.String,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.ResolveAll``1">
+            <summary>
+            Resolves the objects based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.ResolveAll(System.Type)">
+            <summary>
+            Resolves all objects based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.AfterBuild">
+            <summary>
+            Called after the build step.
+            </summary>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.BeforeBuild">
+            <summary>
+            Called before the build step.
+            </summary>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.BeforeModuleResolve">
+            <summary>
+            Runs before the module resolve.
+            </summary>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the object
+            </summary>
+            <param name="managed">
+            <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+            unmanaged resources.
+            </param>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.IsOfType(System.Type,System.Type)">
+            <summary>
+            Determines whether [is of type] [the specified type].
+            </summary>
+            <param name="x">The type to check.</param>
+            <param name="type">The type to check against.</param>
+            <returns><c>true</c> if [is of type] [the specified type]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Canister.BaseClasses.BootstrapperBase`1.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="T:Canister.Builder">
+            <summary>
+            IoC manager class
+            </summary>
+        </member>
+        <member name="P:Canister.Builder.Bootstrapper">
+            <summary>
+            Bootstrapper object
+            </summary>
+        </member>
+        <member name="M:Canister.Builder.CreateContainer(System.Collections.Generic.IEnumerable{Microsoft.Extensions.DependencyInjection.ServiceDescriptor},System.Reflection.Assembly[])">
+            <summary>
+            Creates the IoC Container
+            </summary>
+            <param name="descriptors">The service descriptors.</param>
+            <param name="assemblies">The assemblies to scan for modules/types.</param>
+            <returns>The resulting bootstrapper</returns>
+        </member>
+        <member name="M:Canister.Builder.GetBootstrapper(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Collections.Generic.IEnumerable{System.Type},System.Collections.Generic.IEnumerable{Microsoft.Extensions.DependencyInjection.ServiceDescriptor})">
+            <summary>
+            Gets the bootstrapper.
+            </summary>
+            <param name="Assemblies">The assemblies.</param>
+            <param name="LoadedTypes">The loaded types.</param>
+            <param name="descriptors">The descriptors.</param>
+            <returns>The bootstrapper.</returns>
+        </member>
+        <member name="M:Canister.Builder.LoadAssemblies(System.Reflection.Assembly[])">
+            <summary>
+            Loads the assemblies.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>The loaded assemblies.</returns>
+        </member>
+        <member name="T:Canister.Default.DefaultBootstrapper">
+            <summary>
+            Default bootstrapper
+            </summary>
+            <seealso cref="T:Canister.BaseClasses.BootstrapperBase`1"/>
+            <seealso cref="T:Canister.Interfaces.IScope"/>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Collections.Generic.IEnumerable{Microsoft.Extensions.DependencyInjection.ServiceDescriptor})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Canister.Default.DefaultBootstrapper"/> class.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <param name="collection">The collection.</param>
+        </member>
+        <member name="P:Canister.Default.DefaultBootstrapper.AppContainer">
+            <summary>
+            The IoC container
+            </summary>
+        </member>
+        <member name="P:Canister.Default.DefaultBootstrapper.Name">
+            <summary>
+            Name of the bootstrapper
+            </summary>
+        </member>
+        <member name="P:Canister.Default.DefaultBootstrapper.ServiceProvider">
+            <summary>
+            The <see cref="T:System.IServiceProvider"/> used to resolve dependencies from the scope.
+            </summary>
+        </member>
+        <member name="P:Canister.Default.DefaultBootstrapper.AvailableTypes">
+            <summary>
+            Gets the available types.
+            </summary>
+            <value>The available types.</value>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.CreateScope">
+            <summary>
+            Creates the service scope.
+            </summary>
+            <returns>The service scope</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Register``1(``0,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers an object with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="objectToRegister">The object to register.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Register``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor
+            </summary>
+            <typeparam name="T">Object type to register</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Register``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor of a child class
+            </summary>
+            <typeparam name="T1">Base class/interface type</typeparam>
+            <typeparam name="T2">Child class type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Register``1(System.Func{System.IServiceProvider,System.Object},Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with a function
+            </summary>
+            <typeparam name="T">Type that the function returns</typeparam>
+            <param name="function">The function.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Register(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a generic type with the default constructor
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.RegisterAll``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers all objects of a certain type with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Resolve``1(``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Resolve``1(System.String,``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Resolve(System.Type,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.Resolve(System.Type,System.String,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.ResolveAll``1">
+            <summary>
+            Resolves the objects based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.ResolveAll(System.Type)">
+            <summary>
+            Resolves all objects based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.AfterBuild">
+            <summary>
+            Called after the build step.
+            </summary>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.BeforeBuild">
+            <summary>
+            Called before the build step.
+            </summary>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.BeforeModuleResolve">
+            <summary>
+            Runs before the module resolve.
+            </summary>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.GetAvailableTypes">
+            <summary>
+            Gets the available types.
+            </summary>
+            <returns>The available types.</returns>
+        </member>
+        <member name="M:Canister.Default.DefaultBootstrapper.UpdateServiceProvider">
+            <summary>
+            Updates the service provider.
+            </summary>
+        </member>
+        <member name="T:Canister.Default.ServiceScopeFactory">
+            <summary>
+            Used to create scopes.
+            </summary>
+        </member>
+        <member name="M:Canister.Default.ServiceScopeFactory.#ctor(Canister.Interfaces.IScope)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Canister.Default.ServiceScopeFactory"/> class.
+            </summary>
+            <param name="scope">The scope.</param>
+        </member>
+        <member name="F:Canister.Default.ServiceScopeFactory.Scope">
+            <summary>
+            The scope
+            </summary>
+        </member>
+        <member name="M:Canister.Default.ServiceScopeFactory.CreateScope">
+            <summary>
+            Creates a new scope object.
+            </summary>
+            <returns>The service scope</returns>
+        </member>
+        <member name="T:Canister.Interfaces.IBootstrapper">
+            <summary>
+            Bootstrapper interface
+            </summary>
+        </member>
+        <member name="P:Canister.Interfaces.IBootstrapper.Name">
+            <summary>
+            Name of the bootstrapper
+            </summary>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.AddAssembly(System.Reflection.Assembly[])">
+            <summary>
+            Adds the assembly.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Build">
+            <summary>
+            Builds this instance, loads all modules, etc.
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Register``1(``0,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers an object with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="objectToRegister">The object to register.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Register``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor
+            </summary>
+            <typeparam name="T">Object type to register</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Register(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a generic type with the default constructor
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Register``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with the default constructor of a child class
+            </summary>
+            <typeparam name="T1">Base class/interface type</typeparam>
+            <typeparam name="T2">Child class type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Register``1(System.Func{System.IServiceProvider,System.Object},Microsoft.Extensions.DependencyInjection.ServiceLifetime,System.String)">
+            <summary>
+            Registers a type with a function
+            </summary>
+            <typeparam name="T">Type that the function returns</typeparam>
+            <param name="function">The function.</param>
+            <param name="lifeTime">The life time.</param>
+            <param name="name">The name.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.RegisterAll``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers all objects of a certain type with the bootstrapper
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="lifeTime">The life time.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Resolve``1(``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Resolve``1(System.String,``0)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Resolve(System.Type,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.Resolve(System.Type,System.String,System.Object)">
+            <summary>
+            Resolves the object based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <param name="name">The name.</param>
+            <param name="defaultObject">The default object.</param>
+            <returns>An object of the specified type</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.ResolveAll``1">
+            <summary>
+            Resolves the objects based on the type specified
+            </summary>
+            <typeparam name="T">Type to resolve</typeparam>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="M:Canister.Interfaces.IBootstrapper.ResolveAll(System.Type)">
+            <summary>
+            Resolves all objects based on the type specified
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>A list of objects of the specified type</returns>
+        </member>
+        <member name="T:Canister.Interfaces.IModule">
+            <summary>
+            IoC module base class
+            </summary>
+        </member>
+        <member name="P:Canister.Interfaces.IModule.Order">
+            <summary>
+            Order to run this in
+            </summary>
+        </member>
+        <member name="M:Canister.Interfaces.IModule.Load(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Loads the module using the bootstrapper
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+        </member>
+        <member name="T:Canister.Interfaces.IScope">
+            <summary>
+            The service scope interface
+            </summary>
+        </member>
+        <member name="M:Canister.Interfaces.IScope.CreateScope">
+            <summary>
+            Creates the service scope.
+            </summary>
+            <returns>The service scope</returns>
+        </member>
+        <member name="T:Canister.Interfaces.IScopeFactory">
+            <summary>
+            Service scope factory
+            </summary>
+        </member>
+        <member name="T:Canister.IoC.Modules.DefaultModule">
+            <summary>
+            Default module
+            </summary>
+            <seealso cref="T:Canister.Interfaces.IModule"/>
+        </member>
+        <member name="P:Canister.IoC.Modules.DefaultModule.Order">
+            <summary>
+            Order to run this in
+            </summary>
+        </member>
+        <member name="M:Canister.IoC.Modules.DefaultModule.Load(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Loads the module using the bootstrapper
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+        </member>
+    </members>
+</doc>

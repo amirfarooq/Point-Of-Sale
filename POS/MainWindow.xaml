@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="7*"/>
                         </Grid.ColumnDefinitions>
                         <materialDesign:PackIcon Kind="ViewDashboard" VerticalAlignment="Bottom" RenderTransformOrigin="1.563,0.594" Margin="0,0,0,2"></materialDesign:PackIcon>
-                        <TextBlock Text=" Dashboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,28,0" FontSize="15" Width="76"></TextBlock>
+                        <TextBlock Text=" Dashboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,25,0" FontSize="15" Width="80"></TextBlock>
                     </Grid>
                 </Button>
                 <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_6" >
@@ -66,6 +66,12 @@
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Stocking" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Stock" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
+                    </Grid>
+                </Button>
+                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_7"  >
+                    <Grid Width="150">
+                        <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
+                        <TextBlock Text="Invoices" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
                     </Grid>
                 </Button>
                 <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_5" >

@@ -1,0 +1,1122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SQLHelper.DB</name>
+    </assembly>
+    <members>
+        <member name="T:SQLHelperDB.CanisterModules.SQLHelperModule">
+            <summary>
+            SQLHelper Canister module.
+            </summary>
+            <seealso cref="T:Canister.Interfaces.IModule"/>
+        </member>
+        <member name="P:SQLHelperDB.CanisterModules.SQLHelperModule.Order">
+            <summary>
+            Order to run this in
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.CanisterModules.SQLHelperModule.Load(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Loads the module using the bootstrapper
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+        </member>
+        <member name="T:SQLHelperDB.ExtensionMethods.DbCommandExtensions">
+            <summary>
+            Extension methods for DbCommand
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.AddParameter(System.Data.Common.DbCommand,System.String,System.String,System.Data.ParameterDirection)">
+            <summary>
+            Adds a parameter to the call (for strings only)
+            </summary>
+            <param name="command">Command object</param>
+            <param name="id">Name of the parameter</param>
+            <param name="value">Value to add</param>
+            <param name="direction">Direction that the parameter goes (in or out)</param>
+            <returns>The DbCommand object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.AddParameter(System.Data.Common.DbCommand,System.String,System.Data.SqlDbType,System.Object,System.Data.ParameterDirection)">
+            <summary>
+            Adds a parameter to the call (for all types other than strings)
+            </summary>
+            <param name="command">Command object</param>
+            <param name="id">Name of the parameter</param>
+            <param name="type">SQL type of the parameter</param>
+            <param name="value">Value to add</param>
+            <param name="direction">Direction that the parameter goes (in or out)</param>
+            <returns>The DbCommand object</returns>
+            <exception cref="T:System.ArgumentNullException">command or id</exception>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.AddParameter``1(System.Data.Common.DbCommand,System.String,``0,System.Data.ParameterDirection)">
+            <summary>
+            Adds a parameter to the call (for all types other than strings)
+            </summary>
+            <typeparam name="DataType">Data type of the parameter</typeparam>
+            <param name="command">Command object</param>
+            <param name="id">Name of the parameter</param>
+            <param name="value">Value to add</param>
+            <param name="direction">Direction that the parameter goes (in or out)</param>
+            <returns>The DbCommand object</returns>
+            <exception cref="T:System.ArgumentNullException">command or id</exception>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.AddParameter(System.Data.Common.DbCommand,System.String,System.Data.DbType,System.Object,System.Data.ParameterDirection)">
+            <summary>
+            Adds a parameter to the call (for all types other than strings)
+            </summary>
+            <param name="command">Command object</param>
+            <param name="id">Name of the parameter</param>
+            <param name="type">SQL type of the parameter</param>
+            <param name="value">Value to add</param>
+            <param name="direction">Direction that the parameter goes (in or out)</param>
+            <returns>The DbCommand object</returns>
+            <exception cref="T:System.ArgumentNullException">command or id</exception>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.BeginTransaction(System.Data.Common.DbCommand,System.Int32)">
+            <summary>
+            Begins a transaction
+            </summary>
+            <param name="command">Command object</param>
+            <param name="retries">The retries.</param>
+            <returns>A transaction object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.ClearParameters(System.Data.Common.DbCommand)">
+            <summary>
+            Clears the parameters
+            </summary>
+            <param name="command">Command object</param>
+            <returns>The DBCommand object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.Close(System.Data.Common.DbCommand)">
+            <summary>
+            Closes the connection
+            </summary>
+            <param name="command">Command object</param>
+            <returns>The DBCommand object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.Commit(System.Data.Common.DbCommand)">
+            <summary>
+            Commits a transaction
+            </summary>
+            <param name="command">Command object</param>
+            <returns>The DBCommand object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.ExecuteScalar``1(System.Data.Common.DbCommand,``0,System.Int32)">
+            <summary>
+            Executes the stored procedure as a scalar query
+            </summary>
+            <typeparam name="DataType">The type of the ata type.</typeparam>
+            <param name="command">Command object</param>
+            <param name="defaultValue">Default value if there is an issue</param>
+            <param name="retries">The retries.</param>
+            <returns>The object of the first row and first column</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.ExecuteScalarAsync``1(System.Data.Common.DbCommand,``0,System.Int32)">
+            <summary>
+            Executes the stored procedure as a scalar query async
+            </summary>
+            <typeparam name="DataType">The type of the ata type.</typeparam>
+            <param name="command">Command object</param>
+            <param name="defaultValue">Default value if there is an issue</param>
+            <param name="retries">The retries.</param>
+            <returns>The object of the first row and first column</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.GetOrCreateParameter(System.Data.Common.DbCommand,System.String)">
+            <summary>
+            Gets a parameter or creates it, if it is not found
+            </summary>
+            <param name="command">Command object</param>
+            <param name="id">Name of the parameter</param>
+            <returns>The DbParameter associated with the ID</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.GetOutputParameter``1(System.Data.Common.DbCommand,System.String,``0)">
+            <summary>
+            Returns an output parameter's value
+            </summary>
+            <typeparam name="DataType">Data type of the object</typeparam>
+            <param name="command">Command object</param>
+            <param name="id">Parameter name</param>
+            <param name="defaultValue">Default value for the parameter</param>
+            <returns>
+            if the parameter exists (and isn't null or empty), it returns the parameter's value.
+            Otherwise the default value is returned.
+            </returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.Open(System.Data.Common.DbCommand,System.Int32)">
+            <summary>
+            Opens the connection
+            </summary>
+            <param name="command">Command object</param>
+            <param name="retries">The retries.</param>
+            <returns>The DBCommand object</returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.DbCommandExtensions.Rollback(System.Data.Common.DbCommand)">
+            <summary>
+            Rolls back a transaction
+            </summary>
+            <param name="command">Command object</param>
+            <returns>The DBCommand object</returns>
+        </member>
+        <member name="T:SQLHelperDB.ExtensionMethods.IDataRecordExtensions">
+            <summary>
+            Extension methods for IDataRecord objects
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.IDataRecordExtensions.GetParameter``1(System.Data.IDataRecord,System.String,``0)">
+            <summary>
+            Returns a parameter's value
+            </summary>
+            <typeparam name="DataType">The type of the ata type.</typeparam>
+            <param name="reader">Reader object</param>
+            <param name="id">Parameter name</param>
+            <param name="defaultValue">Default value for the parameter</param>
+            <returns>
+            if the parameter exists (and isn't null or empty), it returns the parameter's value.
+            Otherwise the default value is returned.
+            </returns>
+        </member>
+        <member name="M:SQLHelperDB.ExtensionMethods.IDataRecordExtensions.GetParameter``1(System.Data.IDataRecord,System.Int32,``0)">
+            <summary>
+            Returns a parameter's value
+            </summary>
+            <typeparam name="DataType">The type of the data type.</typeparam>
+            <param name="reader">Reader object</param>
+            <param name="position">Position in the reader row</param>
+            <param name="defaultValue">Default value for the parameter</param>
+            <returns>
+            if the parameter exists (and isn't null or empty), it returns the parameter's value.
+            Otherwise the default value is returned.
+            </returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1">
+            <summary>
+            Parameter base class
+            </summary>
+            <typeparam name="DataType">Data type of the parameter</typeparam>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.#ctor(System.String,`0,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">
+            What the database expects as the parameter starting string ("@" for SQL Server, ":" for
+            Oracle, etc.)
+            </param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.#ctor(System.String,System.Data.SqlDbType,System.Object,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="type">Database type</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">
+            What the database expects as the parameter starting string ("@" for SQL Server, ":" for
+            Oracle, etc.)
+            </param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.#ctor(System.String,System.Data.DbType,System.Object,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="type">Database type</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">
+            What the database expects as the parameter starting string ("@" for SQL Server, ":" for
+            Oracle, etc.)
+            </param>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.DatabaseType">
+            <summary>
+            Database type
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.Direction">
+            <summary>
+            Direction of the parameter
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.ID">
+            <summary>
+            The Name that the parameter goes by
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.InternalValue">
+            <summary>
+            Gets the internal value.
+            </summary>
+            <value>The internal value.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.ParameterStarter">
+            <summary>
+            Starting string of the parameter
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.Value">
+            <summary>
+            Parameter value
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.BatchID">
+            <summary>
+            Batch ID
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.op_Inequality(SQLHelperDB.HelperClasses.BaseClasses.ParameterBase{`0},SQLHelperDB.HelperClasses.BaseClasses.ParameterBase{`0})">
+            <summary>
+            != operator
+            </summary>
+            <param name="first">First item</param>
+            <param name="second">Second item</param>
+            <returns>returns true if they are not equal, false otherwise</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.op_Equality(SQLHelperDB.HelperClasses.BaseClasses.ParameterBase{`0},SQLHelperDB.HelperClasses.BaseClasses.ParameterBase{`0})">
+            <summary>
+            The == operator
+            </summary>
+            <param name="first">First item</param>
+            <param name="second">Second item</param>
+            <returns>true if the first and second item are the same, false otherwise</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.AddParameter(System.Data.Common.DbCommand)">
+            <summary>
+            Adds this parameter to the SQLHelper
+            </summary>
+            <param name="helper">SQLHelper</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.AddParameter(System.String)">
+            <summary>
+            Finds itself in the string command and adds the value
+            </summary>
+            <param name="command">Command to add to</param>
+            <returns>The resulting string</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.CreateCopy(System.String)">
+            <summary>
+            Creates a copy of the parameter
+            </summary>
+            <param name="suffix">Suffix to add to the parameter (for batching purposes)</param>
+            <returns>A copy of the parameter</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.Equals(System.Object)">
+            <summary>
+            Determines if the objects are equal
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>True if they are equal, false otherwise</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures
+            like a hash table.
+            </returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.BaseClasses.ParameterBase`1.ToString">
+            <summary>
+            Returns the string version of the parameter
+            </summary>
+            <returns>The string representation of the parameter</returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Batch">
+            <summary>
+            Holds information for a set of commands
+            </summary>
+            <seealso cref="T:SQLHelperDB.HelperClasses.Interfaces.IBatch"/>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.#ctor(SQLHelperDB.HelperClasses.Interfaces.IConnection)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source">Source info</param>
+        </member>
+        <member name="F:SQLHelperDB.HelperClasses.Batch.ParameterRegex">
+            <summary>
+            Used to parse SQL commands to find parameters (when batching)
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Batch.CommandCount">
+            <summary>
+            Command count
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Batch.Commands">
+            <summary>
+            Commands to batch
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Batch.Source">
+            <summary>
+            Connection string
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.Data.CommandType,System.String)">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="commandType">Command type</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.String,System.Data.CommandType,System.Object[])">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <param name="commandType">Command type</param>
+            <param name="parameters">Parameters to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.String,System.Data.CommandType,SQLHelperDB.HelperClasses.Interfaces.IParameter[])">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <param name="commandType">Command type</param>
+            <param name="parameters">Parameters to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.AddQuery(SQLHelperDB.HelperClasses.Interfaces.IBatch)">
+            <summary>
+            Adds a batch's commands to the current batch
+            </summary>
+            <param name="batch">Batch to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.Execute">
+            <summary>
+            Executes the commands and returns the results
+            </summary>
+            <returns>The results of the batched commands</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.ExecuteAsync">
+            <summary>
+            Executes the commands and returns the results (async)
+            </summary>
+            <returns>The results of the batched commands</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.RemoveDuplicateCommands">
+            <summary>
+            Removes duplicate commands from the batch
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.ToString">
+            <summary>
+            Converts the batch to a string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.CheckTransaction">
+            <summary>
+            Checks whether a transaction is needed.
+            </summary>
+            <returns>True if it is, false otherwise</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.GetResults(System.Collections.Generic.List{System.Collections.Generic.List{System.Object}},System.Data.Common.DbCommand,System.Collections.Generic.List{SQLHelperDB.HelperClasses.Interfaces.IParameter},System.Boolean,System.String)">
+            <summary>
+            Gets the results.
+            </summary>
+            <param name="ReturnValue">The return value.</param>
+            <param name="ExecutableCommand">The executable command.</param>
+            <param name="FinalParameters">The final parameters.</param>
+            <param name="Finalizable">if set to <c>true</c> [finalizable].</param>
+            <param name="FinalSQLCommand">The final SQL command.</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.GetResultsAsync(System.Collections.Generic.List{System.Collections.Generic.List{System.Object}},System.Data.Common.DbCommand,System.Collections.Generic.List{SQLHelperDB.HelperClasses.Interfaces.IParameter},System.Boolean,System.String)">
+            <summary>
+            Gets the results asynchronous.
+            </summary>
+            <param name="ReturnValue">The return value.</param>
+            <param name="ExecutableCommand">The executable command.</param>
+            <param name="FinalParameters">The final parameters.</param>
+            <param name="Finalizable">if set to <c>true</c> [finalizable].</param>
+            <param name="FinalSQLCommand">The final SQL command.</param>
+            <returns>The async task.</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.GetValues(System.Data.Common.DbDataReader)">
+            <summary>
+            Gets the values.
+            </summary>
+            <param name="tempReader">The temporary reader.</param>
+            <returns>The resulting values</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.ExecuteCommands">
+            <summary>
+            Executes the commands.
+            </summary>
+            <returns>The list of results</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.ExecuteCommandsAsync">
+            <summary>
+            Executes the commands asynchronously.
+            </summary>
+            <returns>The list of results</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.FinalizeCommands(System.Collections.Generic.List{System.Collections.Generic.List{System.Object}})">
+            <summary>
+            Finalizes the commands.
+            </summary>
+            <param name="ReturnValue">The return value.</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.SetupCommand(System.Data.Common.DbConnection,System.Data.Common.DbCommand)">
+            <summary>
+            Setups the command.
+            </summary>
+            <param name="DatabaseConnection">The database connection.</param>
+            <param name="ExecutableCommand">The executable command.</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Batch.SetupParameters(System.Int32@,System.Collections.Generic.List{SQLHelperDB.HelperClasses.Interfaces.IParameter},System.Boolean@,System.String@,System.Int32@)">
+            <summary>
+            Setups the parameters.
+            </summary>
+            <param name="Count">The count.</param>
+            <param name="FinalParameters">The final parameters.</param>
+            <param name="Finalizable">if set to <c>true</c> [finalizable].</param>
+            <param name="FinalSQLCommand">The final SQL command.</param>
+            <param name="ParameterTotal">The parameter total.</param>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Command`1">
+            <summary>
+            Command holder class
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <seealso cref="T:SQLHelperDB.HelperClasses.Interfaces.ICommand"/>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.#ctor(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},`0},`0,System.String,System.Data.CommandType,SQLHelperDB.HelperClasses.Interfaces.IParameter[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="callBack">Called when command has been executed</param>
+            <param name="callbackObject">Object</param>
+            <param name="sqlCommand">SQL Command</param>
+            <param name="commandType">Command type</param>
+            <param name="parameters">Parameters</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.#ctor(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},`0},`0,System.String,System.Data.CommandType,System.String,System.Object[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="callBack">Called when command has been executed</param>
+            <param name="callbackObject">Object</param>
+            <param name="sqlCommand">SQL Command</param>
+            <param name="commandType">Command type</param>
+            <param name="parameterStarter">Parameter starter</param>
+            <param name="parameters">Parameters</param>
+        </member>
+        <member name="F:SQLHelperDB.HelperClasses.Command`1.SimpleSelectRegex">
+            <summary>
+            The simple select regex
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.CallBack">
+            <summary>
+            Call back
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.CommandType">
+            <summary>
+            Command type
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.Finalizable">
+            <summary>
+            Used to determine if Finalize should be called.
+            </summary>
+            <value><c>true</c> if finalizable; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.Object">
+            <summary>
+            Object
+            </summary>
+            <value>The object.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.Parameters">
+            <summary>
+            Parameters
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Command`1.SQLCommand">
+            <summary>
+            SQL command
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.Equals(System.Object)">
+            <summary>
+            Determines if the objects are equal
+            </summary>
+            <param name="obj">Object to compare to</param>
+            <returns>Determines if the commands are equal</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.Finalize(System.Collections.Generic.List{System.Object})">
+            <summary>
+            Called after the command is run
+            </summary>
+            <param name="result">Result of the command</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.GetHashCode">
+            <summary>
+            Returns the hash code for the command
+            </summary>
+            <returns>The hash code for the object</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Command`1.ToString">
+            <summary>
+            Returns the string representation of the command
+            </summary>
+            <returns>The string representation of the command</returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Connection">
+            <summary>
+            Data source class
+            </summary>
+            <seealso cref="T:SQLHelperDB.HelperClasses.Interfaces.IConnection"/>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Connection.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.Data.Common.DbProviderFactory,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SQLHelperDB.HelperClasses.Connection"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="factory">The factory.</param>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Connection.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.Data.Common.DbProviderFactory,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="factory">The factory.</param>
+            <param name="connection">The connection.</param>
+            <param name="name">The name.</param>
+            <param name="parameterPrefix">The parameter prefix.</param>
+            <param name="retries">The retries.</param>
+            <exception cref="T:System.ArgumentNullException">configuration</exception>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.CommandTimeout">
+            <summary>
+            Gets the command timeout.
+            </summary>
+            <value>The command timeout.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.Configuration">
+            <summary>
+            Gets the configuration information.
+            </summary>
+            <value>Gets the configuration information.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.ConnectionString">
+            <summary>
+            Connection string
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.DatabaseName">
+            <summary>
+            Gets the database.
+            </summary>
+            <value>The database.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.Factory">
+            <summary>
+            Gets the factory that the system uses to actually do the connection.
+            </summary>
+            <value>The factory that the system needs to actually do the connection.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.Name">
+            <summary>
+            Name of the source
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.ParameterPrefix">
+            <summary>
+            Parameter prefix that the source uses
+            </summary>
+            <value>The parameter prefix.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.Retries">
+            <summary>
+            Gets the number of retries if unable to connect.
+            </summary>
+            <value>The number of retries if unable to connect.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Connection.SourceType">
+            <summary>
+            Source type, based on ADO.Net provider name or identifier used by CUL
+            </summary>
+            <value>The type of the source.</value>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Interfaces.IBatch">
+            <summary>
+            A batch of commands interface
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IBatch.CommandCount">
+            <summary>
+            Number of commands being batched
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.Data.CommandType,System.String)">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="commandType">Command type</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.String,System.Data.CommandType,System.Object[])">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <param name="commandType">Command type</param>
+            <param name="parameters">Parameters to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.String,System.Data.CommandType,SQLHelperDB.HelperClasses.Interfaces.IParameter[])">
+            <summary>
+            Adds a command to be batched
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callBack">Callback action</param>
+            <param name="callbackObject">Object used in the callback action</param>
+            <param name="command">Command (SQL or stored procedure) to run</param>
+            <param name="commandType">Command type</param>
+            <param name="parameters">Parameters to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.AddQuery(SQLHelperDB.HelperClasses.Interfaces.IBatch)">
+            <summary>
+            Adds a batch's commands to the current batch
+            </summary>
+            <param name="batch">Batch to add</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.Execute">
+            <summary>
+            Executes the commands and returns the results
+            </summary>
+            <returns>The results of the batched commands</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.ExecuteAsync">
+            <summary>
+            Executes the commands and returns the results (async)
+            </summary>
+            <returns>The results of the batched commands</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IBatch.RemoveDuplicateCommands">
+            <summary>
+            Removes duplicate commands from the batch
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Interfaces.ICommand">
+            <summary>
+            Command interface
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.ICommand.CommandType">
+            <summary>
+            Command type
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.ICommand.Finalizable">
+            <summary>
+            Gets a value indicating whether this <see cref="T:SQLHelperDB.HelperClasses.Interfaces.ICommand"/> is finalizable.
+            </summary>
+            <value><c>true</c> if finalizable; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.ICommand.Parameters">
+            <summary>
+            Parameters associated with the command
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.ICommand.SQLCommand">
+            <summary>
+            Actual SQL command
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.ICommand.Finalize(System.Collections.Generic.List{System.Object})">
+            <summary>
+            Called after the command is run
+            </summary>
+            <param name="result">Result of the command</param>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Interfaces.IConnection">
+            <summary>
+            Data source interface
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.Configuration">
+            <summary>
+            Gets the configuration information.
+            </summary>
+            <value>Gets the configuration information.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.ConnectionString">
+            <summary>
+            Connection string
+            </summary>
+            <value>The connection.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.DatabaseName">
+            <summary>
+            Gets the database.
+            </summary>
+            <value>The database.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.Factory">
+            <summary>
+            Gets the factory that the system uses to actually do the connection.
+            </summary>
+            <value>The factory that the system needs to actually do the connection.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.Name">
+            <summary>
+            Name of the source
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.ParameterPrefix">
+            <summary>
+            Parameter prefix that the source uses
+            </summary>
+            <value>The parameter prefix.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.Retries">
+            <summary>
+            Gets the number of retries if unable to connect.
+            </summary>
+            <value>The number of retries if unable to connect.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IConnection.SourceType">
+            <summary>
+            Source type, based on ADO.Net provider name
+            </summary>
+            <value>The type of the source.</value>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Interfaces.IParameter`1">
+            <summary>
+            Parameter interface
+            </summary>
+            <typeparam name="T">Value type</typeparam>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter`1.Value">
+            <summary>
+            The value that the parameter is associated with
+            </summary>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Interfaces.IParameter">
+            <summary>
+            Parameter interface
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter.DatabaseType">
+            <summary>
+            Database type
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter.Direction">
+            <summary>
+            Direction of the parameter
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter.ID">
+            <summary>
+            The name that the parameter goes by
+            </summary>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter.InternalValue">
+            <summary>
+            Gets the internal value.
+            </summary>
+            <value>The internal value.</value>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.Interfaces.IParameter.ParameterStarter">
+            <summary>
+            Gets the parameter starter.
+            </summary>
+            <value>The parameter starter.</value>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IParameter.AddParameter(System.Data.Common.DbCommand)">
+            <summary>
+            Adds this parameter to the SQLHelper
+            </summary>
+            <param name="helper">SQLHelper</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IParameter.AddParameter(System.String)">
+            <summary>
+            Finds itself in the string command and adds the value
+            </summary>
+            <param name="command">Command to add to</param>
+            <returns>The resulting string</returns>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Interfaces.IParameter.CreateCopy(System.String)">
+            <summary>
+            Creates a copy of the parameter
+            </summary>
+            <param name="suffix">Suffix to add to the parameter (for batching purposes)</param>
+            <returns>A copy of the parameter</returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.Parameter`1">
+            <summary>
+            Holds parameter information
+            </summary>
+            <typeparam name="DataType">Data type of the parameter</typeparam>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Parameter`1.#ctor(System.String,`0,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">Parameter starter</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Parameter`1.#ctor(System.String,System.Data.SqlDbType,System.Object,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="type">Database type</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">Parameter starter</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Parameter`1.#ctor(System.String,System.Data.DbType,System.Object,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="type">Database type</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">Parameter starter</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Parameter`1.AddParameter(System.Data.Common.DbCommand)">
+            <summary>
+            Adds this parameter to the SQLHelper
+            </summary>
+            <param name="helper">SQLHelper</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.Parameter`1.CreateCopy(System.String)">
+            <summary>
+            Creates a copy of the parameter
+            </summary>
+            <param name="suffix">Suffix to add to the parameter (for batching purposes)</param>
+            <returns>A copy of the parameter</returns>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.SelectFinder">
+            <summary>
+            Finds selects within SQL code.
+            </summary>
+            <seealso cref="T:SQLParser.Parsers.TSql.TSqlParserBaseListener"/>
+        </member>
+        <member name="P:SQLHelperDB.HelperClasses.SelectFinder.StatementFound">
+            <summary>
+            Gets or sets a value indicating whether a select [statement found].
+            </summary>
+            <value><c>true</c> if [statement found]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.SelectFinder.EnterDml_clause(SQLParser.Parsers.TSql.TSqlParser.Dml_clauseContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:SQLParser.Parsers.TSql.TSqlParser.dml_clause"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:SQLHelperDB.HelperClasses.StringParameter">
+            <summary>
+            Holds parameter information
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.StringParameter.#ctor(System.String,System.String,System.Data.ParameterDirection,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">ID of the parameter</param>
+            <param name="value">Value of the parameter</param>
+            <param name="direction">Direction of the parameter</param>
+            <param name="parameterStarter">Parameter starter</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.StringParameter.AddParameter(System.Data.Common.DbCommand)">
+            <summary>
+            Adds this parameter to the SQLHelper
+            </summary>
+            <param name="helper">SQLHelper</param>
+        </member>
+        <member name="M:SQLHelperDB.HelperClasses.StringParameter.CreateCopy(System.String)">
+            <summary>
+            Creates a copy of the parameter
+            </summary>
+            <param name="suffix">Suffix to add to the parameter (for batching purposes)</param>
+            <returns>A copy of the parameter</returns>
+        </member>
+        <member name="T:SQLHelperDB.Registration.Registration">
+            <summary>
+            Registration extension methods
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.Registration.Registration.RegisterSQLHelper(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Registers the library with the bootstrapper.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <returns>The bootstrapper</returns>
+        </member>
+        <member name="T:SQLHelperDB.SQLHelper">
+            <summary>
+            SQL helper class
+            </summary>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.#ctor(Microsoft.Extensions.Configuration.IConfiguration,System.Data.Common.DbProviderFactory,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SQLHelperDB.SQLHelper"/> class.
+            </summary>
+            <param name="configuration">The configuration object.</param>
+            <param name="factory">The factory.</param>
+            <param name="database">The database.</param>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.#ctor(SQLHelperDB.HelperClasses.Interfaces.IConnection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SQLHelperDB.SQLHelper"/> class.
+            </summary>
+            <param name="connection">The connection to use.</param>
+        </member>
+        <member name="P:SQLHelperDB.SQLHelper.Count">
+            <summary>
+            Gets the number of commands currently in the batch.
+            </summary>
+            <value>The number of commands currently in the batch</value>
+        </member>
+        <member name="P:SQLHelperDB.SQLHelper.DatabaseConnection">
+            <summary>
+            Gets or sets the source.
+            </summary>
+            <value>The source.</value>
+        </member>
+        <member name="P:SQLHelperDB.SQLHelper.Batch">
+            <summary>
+            Gets the batch.
+            </summary>
+            <value>The batch.</value>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.AddQuery(System.String,System.Data.CommandType,SQLHelperDB.HelperClasses.Interfaces.IParameter[])">
+            <summary>
+            Adds a command.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.AddQuery(System.Data.CommandType,System.String,System.Object[])">
+            <summary>
+            Adds a command.
+            </summary>
+            <param name="commandType">Type of the command.</param>
+            <param name="command">The command.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.String,System.Data.CommandType,SQLHelperDB.HelperClasses.Interfaces.IParameter[])">
+            <summary>
+            Adds a command.
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callback">The callback.</param>
+            <param name="callbackObject">The callback object.</param>
+            <param name="command">The command.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.AddQuery``1(System.Action{SQLHelperDB.HelperClasses.Interfaces.ICommand,System.Collections.Generic.List{System.Object},``0},``0,System.Data.CommandType,System.String,System.Object[])">
+            <summary>
+            Adds a command which will call the callback function with the object specified when it
+            </summary>
+            <typeparam name="TCallbackData">The type of the callback data.</typeparam>
+            <param name="callback">The callback.</param>
+            <param name="callbackObject">The callback object.</param>
+            <param name="commandType">Type of the command.</param>
+            <param name="command">The command.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.AddQuery(SQLHelperDB.SQLHelper)">
+            <summary>
+            Adds an SQLHelper's commands to this instance
+            </summary>
+            <param name="helper">The helper to copy the commands from</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.CreateBatch">
+            <summary>
+            Clears the system and creates a new batch.
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.Execute">
+            <summary>
+            Executes this instance.
+            </summary>
+            <returns>The results of the batched queries.</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.ExecuteAsync">
+            <summary>
+            Executes the queries asynchronously.
+            </summary>
+            <returns>The result of the queries</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.ExecuteScalar``1(``0)">
+            <summary>
+            Executes the batched commands and returns the first value, ignoring the rest.
+            </summary>
+            <typeparam name="TData">The type of the data to return.</typeparam>
+            <param name="defaultValue">The default value.</param>
+            <returns>The first value of the batch</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.ExecuteScalarAsync``1(``0)">
+            <summary>
+            Executes the batched commands and returns the first value, ignoring the rest (async).
+            </summary>
+            <typeparam name="TData">The type of the data to return.</typeparam>
+            <param name="defaultValue">The default value.</param>
+            <returns>The first value of the batch</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.RemoveDuplicateCommands">
+            <summary>
+            Removes duplicate queries from the batch.
+            </summary>
+            <returns>This</returns>
+        </member>
+        <member name="M:SQLHelperDB.SQLHelper.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+    </members>
+</doc>

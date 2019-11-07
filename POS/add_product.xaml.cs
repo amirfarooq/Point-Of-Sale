@@ -22,120 +22,115 @@ namespace POS
     /// </summary>
     public partial class add_product : UserControl
     {
-
-        string sqlstring = (@"Data Source=DESKTOP-8PS13HC\SQLEXPRESS; Initial Catalog=POS; Integrated Security=True;");
+        SqlHelper con = new SqlHelper();
         static int PK_ID;
 
         public add_product()
         {
             InitializeComponent();
-            fillcombobox();
+            fillcombobox(Combobox1);
             filldatagrid();
         }
 
         //Method for accessing data and fill datagrid
         private void filldatagrid()
         {
-            SqlConnection con = new SqlConnection(sqlstring);
-            con.Open();
-            string sqlquery = "select * from products";
-            SqlCommand cmd = new SqlCommand(sqlquery, con);
+           
+            con.Connection_String();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlHelper.con;
+            cmd.CommandText = "select * from Product";
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
-           // datagrid1.ItemsSource = dt.DefaultView;
-            con.Close();
+          
         }
-        //Method for Fill Combobox after change selected item of another combobox.
-      /*  private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            int cnname1 = name.SelectedIndex;
-            int cname2 = cnname1 ++;
-            SqlConnection con = new SqlConnection(sqlstring);
-            con.Open();
-            string sqlquery = "select * from category where name='" + cname2 + "'";
-            SqlCommand cmd = new SqlCommand(sqlquery, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
-            if (sdr.Read())
-            {
-                string cnname = sdr.GetString(2);
-                //combobox2.Items.Add(cnname);
-            }
-            
-            con.Close();
-        }*/
+      
         //Method for fill combobox
-        void fillcombobox()
-        {
-            SqlConnection con = new SqlConnection(sqlstring);
-            con.Open();
-            string sqlquery = "select * from category";
-           SqlCommand cmd = new SqlCommand(sqlquery, con);
-            SqlDataReader adp = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            while (adp.Read()) {
-                string name = adp.GetString(1);
-                cat_name.Items.Add(name);
+        void fillcombobox(ComboBox comboBoxName)
+        {   
+            con.Connection_String();
+            List<Category> list = new List<Category>();
+            //con.Open();
+            SqlCommand cmd = new SqlCommand("Select CategoryId,CategoryName FROM Category");
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    Combobox1.Items.Clear();
+                    while (reader.Read())
+                    {
+                        Category rep = new Category();
+                        rep.CategoryId = (reader["CategoryId"]).ToString();
+                        rep.CategoryName = (reader["CategoryName"]).ToString();
+                        list.Add(rep);
+                        Combobox1.Items.Add(rep);
+                    }
+                }
             }
-           // adp.Fill(dt);
-            //name.DataContext = dt;
-            //if (dt.Rows.Count > 0)
-            //{
-              // name.Items.Add(dt.Rows[0]["name"].ToString());
-               //name.Items.Add(dt.Rows[1]["name"].ToString());
-           // }
-            con.Close();
-        }
+            }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-          //  if (btnsubmit.Content == "Update")
-            //{
-                //Code for updating data
-              //  SqlConnection con = new SqlConnection(sqlstring);
-                //con.Open();
-                //string sqlquery = "update products set name=@name,description=@description,quantity=@quantity,price=@price,date=@date where id='" + PK_ID + "'";
-                //SqlCommand cmd = new SqlCommand(sqlquery, con);
-                //cmd.Parameters.AddWithValue("@name", txtname.Text);
-                //cmd.Parameters.AddWithValue("@description", txtdescription.Text);
-                //cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                //cmd.Parameters.AddWithValue("@country", combobox1.SelectedValue);
-                //cmd.Parameters.AddWithValue("@state", combobox2.SelectedValue);
-                //cmd.Parameters.AddWithValue("@price", txtprice.Text);
-                //cmd.Parameters.AddWithValue("@date", txtdate.Text);
-                //cmd.ExecuteNonQuery();
-                //filldatagrid();
-                //clearcontrol();
+            //  if (btnsubmit.Content == "Update")
+            //{            //Code for updating data
+            //  SqlConnection con = new SqlConnection(sqlstring);
+            //con.Open();
+            //string sqlquery = "update products set name=@name,description=@description,quantity=@quantity,price=@price,date=@date where id='" + PK_ID + "'";
+            //SqlCommand cmd = new SqlCommand(sqlquery, con);
+            //cmd.Parameters.AddWithValue("@name", txtname.Text);
+            //cmd.Parameters.AddWithValue("@description", txtdescription.Text);
+            //cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
+            //cmd.Parameters.AddWithValue("@country", combobox1.SelectedValue);
+            //cmd.Parameters.AddWithValue("@state", combobox2.SelectedValue);
+            //cmd.Parameters.AddWithValue("@price", txtprice.Text);
+            //cmd.Parameters.AddWithValue("@date", txtdate.Text);
+            //cmd.ExecuteNonQuery();
+            //filldatagrid();
+            //clearcontrol();
             //}
             //else
             //{
-                //Code for inserting data
-                SqlConnection con = new SqlConnection(sqlstring);
-                con.Open();
-                string sqlquery = "insert into products (cat_name,pro_name,quantity,price,date) values (@cat_name,@pro_name,@quantity,@price,@date)";
-                SqlCommand cmd = new SqlCommand(sqlquery, con);
-                cmd.Parameters.AddWithValue("@cat_name", cat_name.SelectedValue);
-                cmd.Parameters.AddWithValue("pro_name", txtpro_name.Text);
-                cmd.Parameters.AddWithValue("@quantity", txtquantity.Text);
-                //  cmd.Parameters.AddWithValue("@country", combobox1.SelectedValue);
-                //cmd.Parameters.AddWithValue("@state", combobox2.SelectedValue);
-                cmd.Parameters.AddWithValue("@price", txtprice.Text);
-                cmd.Parameters.AddWithValue("@date", date.Text);
+            //Code for inserting data
+                con.Connection_String();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = SqlHelper.con;
+
+              cmd.CommandText = "insert into Product (CategoryId,CompanyId,UomId,Barcode,ProductName,Quantity,PurchasePrice,SalePrice,ReorderLevel,ReplenishLevel,ExpireDate) " +
+                "values (@CategoryId,@CompanyId,@UomId,@Barcode,@ProductName,@Quantity,@PurchasePrice,@SalePrice,@ReorderLevel,@ReplenishLevel,@ExpireDate)";              
+                cmd.Parameters.AddWithValue("@CategoryId",Combobox1.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@CompanyId",Combobox2.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@UomId",Combobox3.SelectedValue.ToString());
+                //cmd.Parameters.AddWithValue("@Barcode", txtBarcode.Text);
+                cmd.Parameters.AddWithValue("@ProductName", txtProductName.Text);
+                cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
+                cmd.Parameters.AddWithValue("@PurchasePrice", txtPurchasePrice.Text);
+                cmd.Parameters.AddWithValue("@SalePrice", txtSalePrice.Text);
+                cmd.Parameters.AddWithValue("@ReorderLevel", txtReorderLevel.Text);
+                cmd.Parameters.AddWithValue("@ReplenishLevel", txtReplenishLevel.Text);
+                cmd.Parameters.AddWithValue("@ExpireDate", txtExpireDate.Text);
+               // cmd.Parameters.AddWithValue("@IsActive", txtIsActive);
                 cmd.ExecuteNonQuery();
                 filldatagrid();
                 clearcontrol();
-                MessageBox.Show("Data Inserted Successfully");
-                con.Close();
+                MessageBox.Show("Data Inserted Successfully");        
             //}
         }
         //Method for clear data from control
         private void clearcontrol()
         {
-            cat_name.Text = string.Empty;
-            txtpro_name.Text = string.Empty;
-            txtquantity.Text = string.Empty;
-            txtprice.Text = string.Empty;
-            date.Text = string.Empty;
+            Combobox1.Text = string.Empty;
+            Combobox2.Text = string.Empty;
+            Combobox3.Text = string.Empty;
+           // txtBarcode.Text = string.Empty;
+            txtProductName.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+            txtPurchasePrice.Text = string.Empty;
+            txtSalePrice.Text = string.Empty;
+            txtReorderLevel.Text = string.Empty;
+            txtReplenishLevel.Text = string.Empty;
+            txtExpireDate.Text = string.Empty;
+           // txtIsActive.IsChecked =Empty;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -145,6 +140,13 @@ namespace POS
             Grid.SetRowSpan(db, 3);
             Grid.SetColumnSpan(db, 2);
             prod.Children.Add(db);
+        }
+
+        public class Category
+        {
+            public string CategoryId { get; set; }
+            public string CategoryName { get; set; }
+           
         }
 
     }

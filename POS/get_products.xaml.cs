@@ -22,9 +22,8 @@ namespace POS
     /// </summary>
     public partial class get_products : UserControl
     {
-        string sqlstring = (@"Data Source=DESKTOP-8PS13HC\SQLEXPRESS; Initial Catalog=POS; Integrated Security=True;");
         static int PK_ID;
-
+        SqlHelper con = new SqlHelper();
         public get_products()
         {
             InitializeComponent();
@@ -42,21 +41,30 @@ namespace POS
 
         private void product()
         {
-            SqlConnection con = new SqlConnection(sqlstring);
-            con.Open();
-            string sqlquery = "select * from products";
-            SqlCommand cmd = new SqlCommand(sqlquery, con);
+            con.Connection_String();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = SqlHelper.con;
+            cmd.CommandText = "select * from Product";            
             SqlDataAdapter adp = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             datagrid1.ItemsSource = dt.DefaultView;
-            con.Close();
+          //  con.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             prod.Children.Clear();
             add_product db = new add_product();
+            Grid.SetRowSpan(db, 3);
+            Grid.SetColumnSpan(db, 2);
+            prod.Children.Add(db);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+        
+            Category db = new Category();
             Grid.SetRowSpan(db, 3);
             Grid.SetColumnSpan(db, 2);
             prod.Children.Add(db);

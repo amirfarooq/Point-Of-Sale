@@ -39,8 +39,8 @@
 
         <DataGrid  Grid.Row="2" x:Name="datagrid1" x:Uid="datagrid1" SelectionMode="Single"  Margin="0,200,31,214" ItemsSource="{Binding}" AutoGenerateColumns="False"  Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id}" Header="ID" x:Name="id" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding name}" Header="Name" x:Name="name" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding CategoryId}" Header="ID" x:Name="CategoryId" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding CategoryName}" Header="Name" x:Name="CategoryName" Width="Auto"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Edit">
                     <DataGridTemplateColumn.CellTemplate >
                         <DataTemplate>
@@ -57,7 +57,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="100,125,50,0" Name="txtname"/>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="100,125,50,0" Name="txtCategoryName"/>
         <Label Grid.ColumnSpan="2" Content="Name:" HorizontalAlignment="Center" Margin="0,100,50,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
         <Button x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Submit" HorizontalAlignment="Center" VerticalAlignment="Top" Width="77" Margin="60,160,0,0" Click="Button_Click_1"/>
         <Button Grid.ColumnSpan="2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="230,160,0,0"/>

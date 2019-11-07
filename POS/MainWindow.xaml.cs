@@ -127,6 +127,15 @@ namespace POS
             Grid.SetColumnSpan(dv, 4);
             nam.Children.Add(dv);
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            ClearControls();
+            Invoices dv = new Invoices();
+            Grid.SetRowSpan(dv, 4);
+            Grid.SetColumnSpan(dv, 4);
+            nam.Children.Add(dv);
+        }
     }
 }
 

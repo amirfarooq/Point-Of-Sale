@@ -15,23 +15,70 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Grid.Column="0" Content="Category:" HorizontalAlignment="Left" Margin="48,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=cmbcountry}" RenderTransformOrigin="0.649,1.909"/>
-        <ComboBox  Grid.Row="1" Grid.Column="0" x:Name="cat_name" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="115,54,0,0" VerticalAlignment="Top" Width="120" />
-        <TextBox  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,56,0,0" Name="txtpro_name" />
-        <Label  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Product Name:" HorizontalAlignment="Left" Margin="15,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtpro_name}"/>
+        <ComboBox  Grid.Row="1" Grid.Column="0" x:Name="Combobox1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="115,54,0,0" VerticalAlignment="Top" Width="120"
+               SelectedValuePath="CategoryId"
+                  ItemsSource="{Binding}"
+                   DisplayMemberPath="CategoryName"
+                   SelectedValue="{Binding CategoryId}"  
+               />
+        <Label Grid.Row="1" Grid.Column="1" Content="Company:" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=cmbcountry}" RenderTransformOrigin="0.649,1.909"/>
+        <ComboBox  Grid.Row="1" Grid.Column="1" x:Name="Combobox2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="71,54,0,0" VerticalAlignment="Top" Width="120"
+               SelectedValuePath="CompanyId"
+                  ItemsSource="{Binding}"
+                   DisplayMemberPath="CompanyName"
+                   SelectedValue="{Binding CompanyId}"  
+               />
+        <StackPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+            <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Quantity:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtQuantity}"/>
+            <TextBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="1,10,0,0" Name="txtQuantity" />
+      
+        <ComboBox  Grid.Row="1" Grid.Column="0" x:Name="Combobox3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Width="40"
+               SelectedValuePath="UomId"
+                  ItemsSource="{Binding}"
+                   DisplayMemberPath="UomName"
+                   SelectedValue="{Binding UomId}"  
+               />
+            <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="(kg,ml)" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtQuantity}"/>
 
-        <TextBox  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtquantity"/>
-        <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Quantity:" HorizontalAlignment="Left" Margin="46,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtquantity}"/>
-        <TextBox  Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,54,0,0" Name="txtprice"/>
-        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Price:" HorizontalAlignment="Left" Margin="65,54,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtprice}"/>
-        <DatePicker Grid.Row="3" Grid.Column="0" Height="25" HorizontalAlignment="Left" Margin="115,26,0,0" Name="date" VerticalAlignment="Top" Width="115" />
-        <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Date:" HorizontalAlignment="Left" Margin="62,34,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtdate}"/>
-        <Button Grid.Row="4" Grid.Column="1" x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Center" Margin="0,30"  Width="75" Click="Button_Click_1"/>
+        </StackPanel>
+        <TextBox  Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,10,0,0" Name="txtProductName"/>
+        <Label  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="ProductName:" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtProductName}"/>
+
+        <TextBox  Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,10,0,0" Name="txtPurchasePrice"/>
+        <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Purchase Price:" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtPurchasePrice}"/>
+       
+        <TextBox  Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="71,10,0,0" Name="txtSalePrice"/>
+        <Label  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Content="Sale Price:" HorizontalAlignment="Left" Margin="05,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtPurchasePrice}"/>
+
+
+        <TextBox  Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,10,0,0" Name="txtReorderLevel"/>
+        <Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Reorder Level:" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtReorderLevel}"/>
+
+        <TextBox  Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="71,10,0,0" Name="txtReplenishLevel"/>
+        <Label  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Replenish Level:" HorizontalAlignment="Left" Margin="-26,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtReplenishLevel}"/>
+
+
+
+
+        <TextBox  Grid.Row="5" Grid.Column="0"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="115,10,0,0" Name="txtExpireDate"/>
+        <Label  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="Expiry Date:" HorizontalAlignment="Left" Margin="35,10,0,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtExpireDate}"/>
+<!--
+        <CheckBox Grid.Row="5" Grid.Column="1" Margin="12 15 0 0" Name="IsActive"  
+   Canvas.Left="10" Canvas.Top="10"  
+   Content="Active"  
+   IsChecked="True" IsThreeState="True"  
+   Checked="McCheckBox_Checked" Unchecked="McCheckBox_Unchecke4">
+        </CheckBox>
+-->
+        <Button Grid.Row="6" Grid.Column="1" x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Save" HorizontalAlignment="Center" Margin="0,30"  Width="75" Click="Button_Click_1"/>
         <Grid Grid.ColumnSpan="2">
             <Grid  Background="#FF1778DA" Grid.ColumnSpan="2" Height="40"   VerticalAlignment="Top" Margin=" 0,0,0,0">
                 <Button Margin="5,5,0,3" Background="#FF79A6CD" HorizontalAlignment="Left"  Foreground="White"  Width="145" Height="Auto" Click="Button_Click"  >
@@ -54,7 +101,7 @@
                 </Button>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="275">
             <TextBlock  Text="Add Product" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="5 0 0 30"></TextBlock>
         </Grid>
     </Grid>

@@ -1,0 +1,516 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspectus</name>
+    </assembly>
+    <members>
+        <member name="T:Aspectus.Aspectus">
+            <summary>
+            AOP interface manager
+            </summary>
+        </member>
+        <member name="M:Aspectus.Aspectus.#ctor(Aspectus.CodeGen.Compiler,System.Collections.Generic.IEnumerable{Aspectus.Interfaces.IAspect},System.Collections.Generic.IEnumerable{Aspectus.Interfaces.IAOPModule},Serilog.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Aspectus.Aspectus"/> class.
+            </summary>
+            <param name="compiler">The compiler.</param>
+            <param name="aspects">The aspects.</param>
+            <param name="modules">The modules.</param>
+            <param name="logger">Serilog based log object</param>
+        </member>
+        <member name="M:Aspectus.Aspectus.#ctor(Aspectus.CodeGen.Compiler,System.Collections.Generic.IEnumerable{Aspectus.Interfaces.IAspect},System.Collections.Generic.IEnumerable{Aspectus.Interfaces.IAOPModule})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Aspectus.Aspectus"/> class.
+            </summary>
+            <param name="compiler">The compiler.</param>
+            <param name="aspects">The aspects.</param>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="F:Aspectus.Aspectus.Classes">
+            <summary>
+            Dictionary containing generated types and associates it with original type
+            </summary>
+        </member>
+        <member name="P:Aspectus.Aspectus.Aspects">
+            <summary>
+            The list of aspects that are being used
+            </summary>
+        </member>
+        <member name="P:Aspectus.Aspectus.Compiler">
+            <summary>
+            Gets the system's compiler
+            </summary>
+        </member>
+        <member name="P:Aspectus.Aspectus.Logger">
+            <summary>
+            Logging object
+            </summary>
+        </member>
+        <member name="M:Aspectus.Aspectus.Create``1">
+            <summary>
+            Creates an object of the specified base type, registering the type if necessary
+            </summary>
+            <typeparam name="T">The base type</typeparam>
+            <returns>Returns an object of the specified base type</returns>
+        </member>
+        <member name="M:Aspectus.Aspectus.Create(System.Type)">
+            <summary>
+            Creates an object of the specified base type, registering the type if necessary
+            </summary>
+            <param name="baseType">The base type</param>
+            <returns>Returns an object of the specified base type</returns>
+        </member>
+        <member name="M:Aspectus.Aspectus.FinalizeSetup">
+            <summary>
+            Cleans up items in this instance.
+            </summary>
+        </member>
+        <member name="M:Aspectus.Aspectus.Setup(System.Reflection.Assembly[])">
+            <summary>
+            Sets up all types from the assembly that it can
+            </summary>
+            <param name="assemblies">Assembly to set up</param>
+        </member>
+        <member name="M:Aspectus.Aspectus.Setup(System.Type[])">
+            <summary>
+            Sets up a type so it can be used in the system later
+            </summary>
+            <param name="types">The types.</param>
+        </member>
+        <member name="M:Aspectus.Aspectus.ToString">
+            <summary>
+            Outputs manager info as a string
+            </summary>
+            <returns>String version of the manager</returns>
+        </member>
+        <member name="M:Aspectus.Aspectus.GetAssemblies(System.Type,System.Collections.Generic.List{System.Reflection.Assembly})">
+            <summary>
+            Gets the assemblies.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="assembliesUsing">The assemblies using.</param>
+        </member>
+        <member name="M:Aspectus.Aspectus.GetAssembliesSimple(System.Type,System.Collections.Generic.List{System.Reflection.Assembly})">
+            <summary>
+            Gets the assemblies simple.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="assembliesUsing">The assemblies using.</param>
+        </member>
+        <member name="M:Aspectus.Aspectus.GetFinalAssemblies(System.Collections.Generic.List{System.Reflection.Assembly})">
+            <summary>
+            Gets the final assemblies.
+            </summary>
+            <param name="assembliesUsing">The assemblies using.</param>
+            <returns>The final assemblies</returns>
+        </member>
+        <member name="M:Aspectus.Aspectus.FilterTypesToSetup(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Determines whether this instance can setup the specified types.
+            </summary>
+            <param name="enumerable">The list of types</param>
+            <returns>The types that can be set up</returns>
+        </member>
+        <member name="M:Aspectus.Aspectus.Setup(System.Type,System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Type},System.Collections.Generic.List{System.Reflection.Assembly})">
+            <summary>
+            Setups the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="namespaceUsing">The namespace.</param>
+            <param name="className">Name of the class.</param>
+            <param name="usings">The usings.</param>
+            <param name="interfaces">The interfaces.</param>
+            <param name="assembliesUsing">The assemblies using.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Aspectus.CodeGen.BaseClasses.CompilerBase">
+            <summary>
+            Compiler base class
+            </summary>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.#ctor(System.String,Serilog.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="assemblyName">Assembly name to save the generated types as</param>
+            <param name="logger">Logger object</param>
+            <exception cref="T:System.ArgumentNullException">logger</exception>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.AssemblyName">
+            <summary>
+            Assembly name
+            </summary>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Classes">
+            <summary>
+            Dictionary containing generated types and associates it with original type
+            </summary>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.AssemblyStream">
+            <summary>
+            Gets the assembly stream.
+            </summary>
+            <value>The assembly stream.</value>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Logger">
+            <summary>
+            Logger object
+            </summary>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Optimize">
+            <summary>
+            Should this be optimized?
+            </summary>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Assemblies">
+            <summary>
+            Gets or sets the assemblies.
+            </summary>
+            <value>The assemblies.</value>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>The code.</value>
+        </member>
+        <member name="P:Aspectus.CodeGen.BaseClasses.CompilerBase.Usings">
+            <summary>
+            Gets or sets the usings.
+            </summary>
+            <value>The usings.</value>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.Compile">
+            <summary>
+            Compiles this instance.
+            </summary>
+            <returns>This</returns>
+            <exception cref="T:System.Exception">Any errors that are sent back by Roslyn</exception>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting
+            unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.LoadAssembly">
+            <summary>
+            Loads the assembly into memory.
+            </summary>
+            <returns>The types within the assembly</returns>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.ToString">
+            <summary>
+            Outputs basic information about the compiler as a string
+            </summary>
+            <returns>The string version of the compiler</returns>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.Create``1(System.Type,System.Object[])">
+            <summary>
+            Creates an object using the type specified
+            </summary>
+            <typeparam name="T">Type to cast to</typeparam>
+            <param name="typeToCreate">Type to create</param>
+            <param name="args">Args to pass to the constructor</param>
+            <returns>The created object</returns>
+            <exception cref="T:System.ArgumentNullException">typeToCreate</exception>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.Add(System.String,System.Collections.Generic.IEnumerable{System.String},Microsoft.CodeAnalysis.MetadataReference[])">
+            <summary>
+            Adds the specified code.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="usings">The usings.</param>
+            <param name="references">The references.</param>
+            <returns>This</returns>
+        </member>
+        <member name="M:Aspectus.CodeGen.BaseClasses.CompilerBase.CheckJitProperty(System.Diagnostics.DebuggableAttribute)">
+            <summary>
+            Checks the JIT property.
+            </summary>
+            <param name="debuggableAttribute">The debuggable attribute.</param>
+            <returns>True if in Release mode, false otherwise</returns>
+        </member>
+        <member name="T:Aspectus.CodeGen.Compiler">
+            <summary>
+            Compiler
+            </summary>
+        </member>
+        <member name="M:Aspectus.CodeGen.Compiler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Aspectus.CodeGen.Compiler"/> class.
+            </summary>
+        </member>
+        <member name="M:Aspectus.CodeGen.Compiler.#ctor(Serilog.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger">Logging object</param>
+        </member>
+        <member name="M:Aspectus.CodeGen.Compiler.#ctor(System.String,Serilog.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="assemblyName">Assembly name</param>
+            <param name="logger">Logging object</param>
+        </member>
+        <member name="M:Aspectus.CodeGen.Compiler.Create(System.String,System.Collections.Generic.IEnumerable{System.String},Microsoft.CodeAnalysis.MetadataReference[])">
+            <summary>
+            Compiles the specified code and returns the types that are created
+            </summary>
+            <param name="code">The code.</param>
+            <param name="usings">The usings.</param>
+            <param name="references">The references.</param>
+            <returns>The list of types that are generated</returns>
+        </member>
+        <member name="T:Aspectus.ExtensionMethods.Registration">
+            <summary>
+            Registration extension methods
+            </summary>
+        </member>
+        <member name="M:Aspectus.ExtensionMethods.Registration.RegisterAspectus(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Registers the aspectus library with the bootstrapper.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <returns>The bootstrapper</returns>
+        </member>
+        <member name="T:Aspectus.HelperFunctions.ExtensionMethods">
+            <summary>
+            Extension methods
+            </summary>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.Add``1(System.Collections.Concurrent.ConcurrentBag{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a list of items to the collection
+            </summary>
+            <typeparam name="T">The type of the items in the collection</typeparam>
+            <param name="collection">Collection</param>
+            <param name="items">Items to add</param>
+            <returns>The collection with the added items</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AddIf``1(System.Collections.Generic.ICollection{``0},System.Predicate{``0},``0[])">
+            <summary>
+            Adds items to the collection if it passes the predicate test
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+            <param name="collection">Collection to add to</param>
+            <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
+            <param name="items">Items to add to the collection</param>
+            <returns>True if any are added, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AddIf``1(System.Collections.Generic.ICollection{``0},System.Predicate{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds an item to the collection if it isn't already in the collection
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+            <param name="collection">Collection to add to</param>
+            <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
+            <param name="items">Items to add to the collection</param>
+            <returns>True if it is added, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AddIfUnique``1(System.Collections.Generic.ICollection{``0},System.Func{``0,``0,System.Boolean},``0[])">
+            <summary>
+            Adds an item to the collection if it isn't already in the collection
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+            <param name="collection">Collection to add to</param>
+            <param name="predicate">
+            Predicate used to determine if two values are equal. Return true if they are the same,
+            false otherwise
+            </param>
+            <param name="items">Items to add to the collection</param>
+            <returns>True if it is added, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AddIfUnique``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds an item to the collection if it isn't already in the collection
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+            <param name="collection">Collection to add to</param>
+            <param name="items">Items to add to the collection</param>
+            <returns>True if it is added, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AddIfUnique``1(System.Collections.Generic.ICollection{``0},``0[])">
+            <summary>
+            Adds an item to the collection if it isn't already in the collection
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+            <param name="collection">Collection to add to</param>
+            <param name="items">Items to add to the collection</param>
+            <returns>True if it is added, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AppendLineFormat(System.Text.StringBuilder,System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Does an AppendFormat and then an AppendLine on the StringBuilder
+            </summary>
+            <param name="builder">Builder object</param>
+            <param name="provider">Format provider (CultureInfo) to use</param>
+            <param name="format">Format string</param>
+            <param name="objects">Objects to format</param>
+            <returns>The StringBuilder passed in</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.AppendLineFormat(System.Text.StringBuilder,System.String,System.Object[])">
+            <summary>
+            Does an AppendFormat and then an AppendLine on the StringBuilder
+            </summary>
+            <param name="builder">Builder object</param>
+            <param name="format">Format string</param>
+            <param name="objects">Objects to format</param>
+            <returns>The StringBuilder passed in</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Does an action for each item in the IEnumerable
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="list">IEnumerable to iterate over</param>
+            <param name="action">Action to do</param>
+            <returns>The original list</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Does a function for each item in the IEnumerable, returning a list of the results
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <typeparam name="R">Return type</typeparam>
+            <param name="list">IEnumerable to iterate over</param>
+            <param name="function">Function to do</param>
+            <returns>The resulting list</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.ForEachParallel``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Does an action for each item in the IEnumerable in parallel
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="list">IEnumerable to iterate over</param>
+            <param name="action">Action to do</param>
+            <returns>The original list</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.GetName(System.Type)">
+            <summary>
+            Returns the type's name (Actual C# name, not the funky version from the Name property)
+            </summary>
+            <param name="objectType">Type to get the name of</param>
+            <returns>string name of the type</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.HasDefaultConstructor(System.Type)">
+            <summary>
+            Determines if the type has a default constructor
+            </summary>
+            <param name="type">Type to check</param>
+            <returns>True if it does, false otherwise</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.ReadAllBinary(System.IO.Stream)">
+            <summary>
+            Takes all of the data in the stream and returns it as an array of bytes
+            </summary>
+            <param name="input">Input stream</param>
+            <returns>A byte array</returns>
+        </member>
+        <member name="M:Aspectus.HelperFunctions.ExtensionMethods.ToString``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.String)">
+            <summary>
+            Converts the list to a string where each item is seperated by the Seperator
+            </summary>
+            <typeparam name="T">Item type</typeparam>
+            <param name="list">List to convert</param>
+            <param name="itemOutput">
+            Used to convert the item to a string (defaults to calling ToString)
+            </param>
+            <param name="seperator">Seperator to use between items (defaults to ,)</param>
+            <returns>The string version of the list</returns>
+        </member>
+        <member name="T:Aspectus.Interfaces.IAOPModule">
+            <summary>
+            AOP module interface
+            </summary>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAOPModule.Setup(Aspectus.Aspectus)">
+            <summary>
+            Used to add a class to the AOP system
+            </summary>
+            <param name="manager">AOP manager</param>
+        </member>
+        <member name="T:Aspectus.Interfaces.IAspect">
+            <summary>
+            Aspect interface
+            </summary>
+        </member>
+        <member name="P:Aspectus.Interfaces.IAspect.AssembliesUsing">
+            <summary>
+            Set of assemblies that the aspect requires
+            </summary>
+        </member>
+        <member name="P:Aspectus.Interfaces.IAspect.InterfacesUsing">
+            <summary>
+            List of interfaces that need to be injected by this aspect
+            </summary>
+        </member>
+        <member name="P:Aspectus.Interfaces.IAspect.Usings">
+            <summary>
+            Using statements that the aspect requires
+            </summary>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.Setup(System.Object)">
+            <summary>
+            Used to hook into the object once it has been created
+            </summary>
+            <param name="value">Object created by the system</param>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.SetupDefaultConstructor(System.Type)">
+            <summary>
+            Used to insert code into the default constructor
+            </summary>
+            <param name="baseType">Base type</param>
+            <returns>The code to insert</returns>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.SetupEndMethod(System.Reflection.MethodInfo,System.Type,System.String)">
+            <summary>
+            Used to insert code at the end of the method
+            </summary>
+            <param name="method">Overridding Method</param>
+            <param name="baseType">Base type</param>
+            <param name="returnValueName">Local holder for the value returned by the function</param>
+            <returns>The code to insert</returns>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.SetupExceptionMethod(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Used to insert code within the catch portion of the try/catch portion of the method
+            </summary>
+            <param name="method">Overridding Method</param>
+            <param name="baseType">Base type</param>
+            <returns>The code to insert</returns>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.SetupInterfaces(System.Type)">
+            <summary>
+            Used to set up any interfaces, extra fields, methods, etc. prior to overridding any methods.
+            </summary>
+            <param name="type">Type of the object</param>
+            <returns>The code to insert</returns>
+        </member>
+        <member name="M:Aspectus.Interfaces.IAspect.SetupStartMethod(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Used to insert code at the beginning of the method
+            </summary>
+            <param name="method">Overridding Method</param>
+            <param name="baseType">Base type</param>
+            <returns>The code to insert</returns>
+        </member>
+        <member name="T:Aspectus.Module.AOPModule">
+            <summary>
+            AOP module
+            </summary>
+        </member>
+        <member name="P:Aspectus.Module.AOPModule.Order">
+            <summary>
+            Order to run it in
+            </summary>
+        </member>
+        <member name="M:Aspectus.Module.AOPModule.Load(Canister.Interfaces.IBootstrapper)">
+            <summary>
+            Loads the module
+            </summary>
+            <param name="bootstrapper">Bootstrapper to register with</param>
+        </member>
+    </members>
+</doc>

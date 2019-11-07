@@ -1,10 +1,6 @@
 ﻿
-FD:\.Net Projects\POS\POS\App.xaml;;
-FD:\.Net Projects\POS\POS\add_product.xaml;;
-FD:\.Net Projects\POS\POS\Category.xaml;;
-FD:\.Net Projects\POS\POS\Dashboard.xaml;;
-FD:\.Net Projects\POS\POS\Employees.xaml;;
-FD:\.Net Projects\POS\POS\get_products.xaml;;
-FD:\.Net Projects\POS\POS\Login.xaml;;
-FD:\.Net Projects\POS\POS\MainWindow.xaml;;
+
+FD:\.net POS\Point-Of-Sale\POS\add_product.xaml;;
+FD:\.net POS\Point-Of-Sale\POS\Company.xaml;;
+FD:\.net POS\Point-Of-Sale\POS\Uom.xaml;;
 
