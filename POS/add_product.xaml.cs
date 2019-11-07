@@ -101,7 +101,7 @@ namespace POS
                 cmd.Parameters.AddWithValue("@CategoryId",Combobox1.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@CompanyId",Combobox2.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@UomId",Combobox3.SelectedValue.ToString());
-                //cmd.Parameters.AddWithValue("@Barcode", txtBarcode.Text);
+                cmd.Parameters.AddWithValue("@Barcode", txtBarcode.Text);
                 cmd.Parameters.AddWithValue("@ProductName", txtProductName.Text);
                 cmd.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
                 cmd.Parameters.AddWithValue("@PurchasePrice", txtPurchasePrice.Text);
@@ -122,7 +122,7 @@ namespace POS
             Combobox1.Text = string.Empty;
             Combobox2.Text = string.Empty;
             Combobox3.Text = string.Empty;
-           // txtBarcode.Text = string.Empty;
+            txtBarcode.Text = string.Empty;
             txtProductName.Text = string.Empty;
             txtQuantity.Text = string.Empty;
             txtPurchasePrice.Text = string.Empty;

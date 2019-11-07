@@ -242,6 +242,8 @@ namespace POS
             }
             this._contentLoaded = true;
         }
+
+        internal System.Windows.Controls.TextBox txtBarcode;
     }
 }
 
