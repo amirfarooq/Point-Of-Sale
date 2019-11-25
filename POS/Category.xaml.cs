@@ -76,7 +76,7 @@ namespace POS
         //Method for clear data from control
         private void clearcontrol()
         {
-            txtname.Text = string.Empty;
+            txtCategoryName.Text = string.Empty;
            
         }
 

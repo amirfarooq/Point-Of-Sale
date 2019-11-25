@@ -31,7 +31,7 @@
                 <TextBlock Text="Powered By Labbaik Sweets" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontFamily="Helvetica" Foreground="White" ></TextBlock>
             </Grid>
             <StackPanel Grid.Row="1" Background="#FF1778DA" x:Name="stkPenal">
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White"  >
+                <Button  Margin="10 10 10 5" Height="35" Background="#FF79A6CD" Foreground="White"  >
                     <Grid Width="150">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="144*"/>
@@ -41,7 +41,7 @@
                         <TextBlock Text=" Dashboard" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,25,0" FontSize="15" Width="80"></TextBlock>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_6" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_6" >
                     <Grid Width="150">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="11*"/>
@@ -52,7 +52,7 @@
                         <TextBlock Text="Categories" FontSize="15" Margin="20,0,0,0.696" Grid.RowSpan="3"/>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_1" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_1" >
                     <Grid Width="150">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="9*"/>
@@ -62,31 +62,51 @@
                         <TextBlock Text="Products" VerticalAlignment="Center" FontSize="15" Margin="0,1" Grid.RowSpan="2" HorizontalAlignment="Right" Width="130"/>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_8"  >
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <materialDesign:PackIcon Kind="Stocking" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531" Margin="0,2,0,0.333"></materialDesign:PackIcon>
+                        <TextBlock Text="Purchases" VerticalAlignment="Center" FontSize="15" Margin="0,1" Grid.RowSpan="2" HorizontalAlignment="Right" Width="130"/>
+                    </Grid>
+                </Button>
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_9"  >
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <materialDesign:PackIcon Kind="Sale" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531" Margin="0,2,0,0.333"></materialDesign:PackIcon>
+                        <TextBlock Text="Sales" VerticalAlignment="Center" FontSize="15" Margin="0,1" Grid.RowSpan="2" HorizontalAlignment="Right" Width="130"/>
+                    </Grid>
+                </Button>
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" >
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Stocking" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Stock" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_7"  >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_7"  >
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Invoice" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Invoices" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_5" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click_5" >
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="User" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Employees" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" >
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Report" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Report" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>
                     </Grid>
                 </Button>
-                <Button  Margin="10" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click" >
+                <Button  Margin="10 5 10 5" Height="35" Background="#FF79A6CD" Foreground="White" Click="Button_Click" >
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Logout" VerticalAlignment="Center" RenderTransformOrigin="1.281,0.531"></materialDesign:PackIcon>
                         <TextBlock Text="Logout" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15" Margin="20,0,0,0"></TextBlock>

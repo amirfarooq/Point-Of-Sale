@@ -10,4 +10,6 @@ FD:\.net POS\Point-Of-Sale\POS\Login.xaml;;
 FD:\.net POS\Point-Of-Sale\POS\MainWindow.xaml;;
 FD:\.net POS\Point-Of-Sale\POS\Uom.xaml;;
 FD:\.net POS\Point-Of-Sale\POS\Company.xaml;;
+FD:\.net POS\Point-Of-Sale\POS\AddPurchase.xaml;;
+FD:\.net POS\Point-Of-Sale\POS\AddSale.xaml;;
 

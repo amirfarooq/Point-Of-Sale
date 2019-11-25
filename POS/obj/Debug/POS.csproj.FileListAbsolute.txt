@@ -288,3 +288,8 @@ D:\.net POS\Point-Of-Sale\POS\obj\Debug\POS.exe.config
 D:\.net POS\Point-Of-Sale\POS\obj\Debug\Uom.g.cs
 D:\.net POS\Point-Of-Sale\POS\obj\Debug\Uom.baml
 D:\.net POS\Point-Of-Sale\POS\obj\Debug\Company.g.cs
+D:\.net POS\Point-Of-Sale\POS\obj\Debug\AddPurchase.g.cs
+D:\.net POS\Point-Of-Sale\POS\obj\Debug\AddSale.g.cs
+D:\.net POS\Point-Of-Sale\POS\obj\Debug\Company.baml
+D:\.net POS\Point-Of-Sale\POS\obj\Debug\AddPurchase.baml
+D:\.net POS\Point-Of-Sale\POS\obj\Debug\AddSale.baml

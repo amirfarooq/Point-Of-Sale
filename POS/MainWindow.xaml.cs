@@ -52,42 +52,6 @@ namespace POS
             TBB.Text = DateTime.Now.ToString("   TODAY             dd-MM-yyyy              hh:mm:ss tt");
         }
 
-        private void Txt2_Click(object sender, RoutedEventArgs e)
-        {
-            //ClearControls();
-            //emp dv = new emp();
-            //Grid.SetRowSpan(dv, 4);
-            //Grid.SetColumnSpan(dv, 4);
-           // main.Children.Add(dv);
-        }
-
-        private void Txt4_Click(object sender, RoutedEventArgs e)
-        {
-            //ClearControls();
-            //Late ep = new Late();
-            //Grid.SetRowSpan(ep, 4);
-            //Grid.SetColumnSpan(ep, 4);
-            //main.Children.Add(ep);
-        }
-
-        private void Txt3_Click(object sender, RoutedEventArgs e)
-        {
-           // ClearControls();
-            //absent ep = new absent(absents);
-            //Grid.SetRowSpan(ep, 4);
-            //Grid.SetColumnSpan(ep, 4);
-        //    main.Children.Add(ep);
-        }
-
-        private void BtnTotal_Click(object sender, RoutedEventArgs e)
-        {
-           // ClearControls();
-            //Record dv = new Record();
-            //Grid.SetRowSpan(dv, 4);
-            //Grid.SetColumnSpan(dv, 4);
-            //main.Children.Add(dv);
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
@@ -132,6 +96,24 @@ namespace POS
         {
             ClearControls();
             Invoices dv = new Invoices();
+            Grid.SetRowSpan(dv, 4);
+            Grid.SetColumnSpan(dv, 4);
+            nam.Children.Add(dv);
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            ClearControls();
+            AddPurchase dv = new AddPurchase();
+            Grid.SetRowSpan(dv, 4);
+            Grid.SetColumnSpan(dv, 4);
+            nam.Children.Add(dv);
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            ClearControls();
+            AddSale dv = new AddSale();
             Grid.SetRowSpan(dv, 4);
             Grid.SetColumnSpan(dv, 4);
             nam.Children.Add(dv);

@@ -58,7 +58,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="100,125,50,0" Name="txtCategoryName"/>
-        <Label Grid.ColumnSpan="2" Content="Name:" HorizontalAlignment="Center" Margin="0,100,50,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtname}"/>
+        <Label Grid.ColumnSpan="2" Content="Name:" HorizontalAlignment="Center" Margin="0,100,50,0" VerticalAlignment="Top"  Target="{Binding ElementName=txtCategoryName}"/>
         <Button x:Name="btnsubmit" Grid.ColumnSpan="2" Content="Submit" HorizontalAlignment="Center" VerticalAlignment="Top" Width="77" Margin="60,160,0,0" Click="Button_Click_1"/>
         <Button Grid.ColumnSpan="2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="230,160,0,0"/>
     </Grid>

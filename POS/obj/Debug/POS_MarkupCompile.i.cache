@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\.net POS\Point-Of-Sale\POS\App.xaml
-10-167237429
+12351121925
 
-19-224551393
+21-1213376420
 1502021654493
-add_product.xaml;Category.xaml;Company.xaml;Dashboard.xaml;Employees.xaml;get_products.xaml;Invoices.xaml;Login.xaml;MainWindow.xaml;Uom.xaml;
+AddPurchase.xaml;AddSale.xaml;add_product.xaml;Category.xaml;Company.xaml;Dashboard.xaml;Employees.xaml;get_products.xaml;Invoices.xaml;Login.xaml;MainWindow.xaml;Uom.xaml;
 
 True
 

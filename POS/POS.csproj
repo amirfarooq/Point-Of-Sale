@@ -189,6 +189,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPurchase.xaml.cs">
+      <DependentUpon>AddPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddSale.xaml.cs">
+      <DependentUpon>AddSale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Company.xaml.cs">
       <DependentUpon>Company.xaml</DependentUpon>
     </Compile>
@@ -196,6 +202,14 @@
     <Compile Include="Uom.xaml.cs">
       <DependentUpon>Uom.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="add_product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
